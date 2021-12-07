@@ -100,7 +100,7 @@ namespace UnityEngine.Experimental.Rendering.Universal
                     || !cameraData.resolveFinalTarget
                     || !Mathf.Approximately(cameraData.renderScale, 1.0f);
 
-                m_CreateDepthTexture = !cameraData.resolveFinalTarget && m_UseDepthStencilBuffer;
+                m_CreateDepthTexture = m_UseDepthStencilBuffer; // Taken out !cameraData.resolveFinalTarget &&, as this would never be false for Renderer2D.
 
                 colorTargetHandle = m_CreateColorTexture ? k_ColorTextureHandle : RenderTargetHandle.CameraTarget;
                 depthTargetHandle = m_CreateDepthTexture ? k_DepthTextureHandle : colorTargetHandle;
